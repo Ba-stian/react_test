@@ -1,9 +1,10 @@
 import React from 'react';
 import reviews from './reviews.css';
+import PropTypes from 'prop-types';
 
 
-const Reviews = () => (
-	<div className={reviews.reviews}>
+const Reviews = (props) => (
+	<div className={`${reviews.reviews} ${props.className || ''}`}>
 		<img src={require('../../img/trophy.svg')} alt="trophy"
 			className={reviews.img1}/>
 		<p>Более 50 отзывов с оценкой </p>
@@ -11,5 +12,9 @@ const Reviews = () => (
 			className={reviews.img2}/>
 	</div>
 );
+
+Reviews.propTypes = {
+	className: PropTypes.string.isRequired,
+};
 
 export default Reviews;
