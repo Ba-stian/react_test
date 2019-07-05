@@ -4,10 +4,12 @@ import details from './details.js';
 
 
 export const Reviews = () => (
-	<div>
-		<img src={require('../../img/trophy.svg')} alt="trophy"/>
+	<div className={first.reviews}>
+		<img src={require('../../img/trophy.svg')} alt="trophy"
+			className={first.img1}/>
 		<p>Более 50 отзывов с оценкой </p>
-		<img src={require('../../img/stars.svg')} alt="stars"/>
+		<img src={require('../../img/stars.svg')} alt="stars"
+			className={first.img2}/>
 	</div>
 );
 /**
@@ -37,10 +39,8 @@ class FirstSection extends React.Component {
 						<Reviews/>
 					</div>
 					<div className={first.column2}>
-						<img src="../../img/pic3.svg" alt="photo"
+						<img src={require('../../img/pic3.svg')} alt="photo"
 							className={first.image}/></div>
-				</div>
-				<div className={first.pics}>
 				</div>
 			</div>
 		);
