@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '../button/button.jsx';
+import Button from '../widgets/button/button.jsx';
 import header from './header.css';
 
 
