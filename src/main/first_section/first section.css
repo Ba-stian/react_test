@@ -27,15 +27,6 @@
 	padding-bottom: 9px;
 }
 
-.pics {
-	max-width: 600px;
-}
-
-.pic {
-	max-width: 100px;
-	width: 100%;
-}
-
 .details {
 	display: flex;
 	align-items: center;
