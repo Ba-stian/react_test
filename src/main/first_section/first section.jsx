@@ -1,17 +1,9 @@
 import React from 'react';
 import first from './first section.css';
 import details from './details.js';
+import Reviews from '../../widgets/reviews/reviews.jsx';
 
 
-export const Reviews = () => (
-	<div className={first.reviews}>
-		<img src={require('../../img/trophy.svg')} alt="trophy"
-			className={first.img1}/>
-		<p>Более 50 отзывов с оценкой </p>
-		<img src={require('../../img/stars.svg')} alt="stars"
-			className={first.img2}/>
-	</div>
-);
 /**
  * @classdesc Class for First Section
  */
