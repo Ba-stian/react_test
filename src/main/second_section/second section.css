@@ -1,0 +1,35 @@
+.pics {
+	max-width: 580px;
+	margin: 0 auto;
+}
+
+.pic {
+	max-width: 140px;
+	width: 100%;
+	padding: 0 3px 0 0;
+}
+
+.header {
+	color: #000;
+	font-size: 9px;
+	margin-bottom: 18px;
+	letter-spacing: .6px;
+}
+.wrapper {
+	padding: 17px 0 0 18px;
+}
+
+.container {
+	max-width: 580px;
+	margin: 0 auto;
+	border-bottom: 0.5px solid #C7C7C7;
+}
+
+.link {
+	background: url("../../img/show.svg") no-repeat;
+	background-size: 90%;
+	width: 116px;
+	height: 20px;
+	display: block;
+	margin: 14px auto 6px;
+}
