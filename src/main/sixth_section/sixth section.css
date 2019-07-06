@@ -1,0 +1,93 @@
+.wrapper {
+	display: flex;
+	max-width: 580px;
+	width: 100%;
+	margin: 0 auto;
+}
+
+.container {
+	margin: 42px 0 0 7px
+}
+
+.header {
+	font-size: 10px;
+	color: #37373f;
+	padding-bottom: 10px;
+}
+
+.comment {
+	display: flex;
+	padding-top: 13px;
+	max-height: 139px;
+	padding-bottom: 1px;
+}
+
+.person {
+	width: 92%;
+}
+
+.pic {
+	max-width: 55px;
+	width: 100%;
+}
+.name {
+	font-size: 9px;
+	color: #37373f;
+	padding: 6px 0 5px;
+}
+
+.profession {
+	font-size: 7px;
+	color: #37373f;
+}
+
+.column {
+	padding: 0 7px 0 0;
+}
+
+.row {
+	padding-bottom: 9px;
+}
+
+.rate {
+	display: inline-block;
+	font-size: 7px;
+	color: #b3b3b3;
+}
+
+.review {
+	font-size: 8px;
+	color: #37373f;
+	max-width: 252px;
+	line-height: 12px;
+}
+
+.date {
+	font-size: 7px;
+	color: #b3b3b3;
+	padding: 8px 0 15px;
+	margin-right: 34px;
+	border-bottom: 0.5px solid #c7c7c7;
+	box-sizing: border-box;
+}
+
+.stars {
+	width: 20%;
+	padding-right: 22px;
+}
+
+.check {
+	width: 3%;
+	padding-right: 2px;
+}
+
+.link {
+	background: url("../../img/link2.svg") no-repeat;
+	background-size: 100%;
+	width: 106px;
+	height: 11px;
+	position: relative;
+	top: 41px;
+	left: 65%;
+	display: inline-block;
+}
