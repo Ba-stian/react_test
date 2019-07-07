@@ -58,6 +58,7 @@
 .photo {
 	width: 40%;
 	transform: translate(16px, 1px);
+	border-radius: 50%;
 }
 
 .heart {

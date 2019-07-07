@@ -1,42 +1,64 @@
 import React from 'react';
 import first from './first section.css';
-import details from './details.js';
 import Reviews from '../../widgets/reviews/reviews.jsx';
+import PropTypes from 'prop-types';
 
 
 /**
- * @classdesc Class for First Section
+ * @classdesc class for First Section
  */
 class FirstSection extends React.Component {
+	/**
+	 * @param {data} props
+	 */
+	constructor(props) {
+		super(props);
+		this.props = props;
+	}
+
 	/**
 	 * @return {FirstSection} markup
 	 */
 	render() {
-		const Details = details.map(({src, description, text, id}) =>
-			<div key={id} className={first.details}>
-				<img src={src} alt={description} className={first.icons}/>
-				<p className={first.text}>{text}</p>
-			</div>);
-		return (
+		const Details = (props) => (
+			<div className={first.details}>
+				<img src={props.src} alt="icon" className={first.icons}/>
+				<p className={first.text}>{props.description}</p>
+			</div>
+		);
+		return 	(
 			<div className={first.container}>
 				<div className={first.wrapper}>
 					<div className={first.column1}>
-						<h2 className={first.header}>Полет на воздушном
-							шаре</h2>
+						<h2 className={first.header}>{this.props.content.name}</h2>
 						<p className={first.paragraph}>
-							Пикник на воздушном шаре в облаках это именно
-							тот подарок, который поможет разделить эмоции
-							и впечатления со своими близкими людьми</p>
-						{Details}
-						<Reviews/>
+							{this.props.content.description}</p>
+						<Details src={require('../../img/1.svg')}
+							description={`${this.props.content.quantity} часа съёмки`}/>
+						<Details src={require('../../img/4.svg')}
+							description={`${this.props.content.languages[0]}, 
+						${this.props.content.languages[1]}`}/>
+						<Details src={require('../../img/1.svg')}
+							description={`От ${this.props.content.price} ₽`}/>
+						<Details src={require('../../img/3.svg')}
+							description={this.props.content.city}/>
+						<Details src={require('../../img/2.svg')}
+							description={`Более ${this.props.content.results.photos},
+						фотографий`}/>
+						<Reviews className={''}/>
 					</div>
 					<div className={first.column2}>
-						<img src={require('../../img/pic3.svg')} alt="photo"
-							className={first.image}/></div>
+						<img
+							src={`${this.props.content.images[0].url_original}`}
+							alt="photo" className={first.image}/></div>
 				</div>
 			</div>
 		);
 	}
 }
+
+FirstSection.propTypes = {
+	content: PropTypes.object.isRequired,
+};
 
 export default FirstSection;

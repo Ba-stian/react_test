@@ -4,8 +4,7 @@ import button from './button.css';
 
 
 const Button = (props) => (
-	<button className={`${button.btn} ${props.className}`}
-		onClick={props.action}>
+	<button className={`${button.btn} ${props.className}`}>
 		{props.text}
 	</button>
 );
@@ -13,7 +12,6 @@ const Button = (props) => (
 Button.propTypes = {
 	text: PropTypes.string.isRequired,
 	className: PropTypes.string.isRequired,
-	action: PropTypes.func.isRequired,
 };
 
 export default Button;

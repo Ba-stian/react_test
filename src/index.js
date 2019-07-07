@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from './app.jsx';
+import {ApolloProvider} from 'react-apollo';
+import client from './client.js';
 
 
-const App = () => (
-	<div>
-		<h1>Hello, devjs</h1>
-	</div>
-);
+ReactDOM.render(
+	<ApolloProvider client={client}>
+		<App/>
+	</ApolloProvider>,
 
-ReactDOM.render(<App/>, document.getElementById('root'));
+
+	document.getElementById('root'));

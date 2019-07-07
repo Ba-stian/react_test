@@ -1,17 +1,26 @@
 import React from 'react';
-import pics from '../../img/pic';
 import second from '../second_section/second section.css';
+import PropTypes from 'prop-types';
 
 /**
  * @classdesc class for Second Section
  */
 class SecondSection extends React.Component {
 	/**
+	 * @param {data} props
+	 */
+	constructor(props) {
+		super(props);
+		this.props = props;
+	}
+	/**
 	 * @return {SecondSection} markup
 	 */
 	render() {
-		const Pics = pics.map(({id, src, description}) =>
-			<img key={id} src={src} alt={description} className={second.pic}/>);
+		const Pics = this.props.content.images.map(({url_original}, i) =>
+			<img key={i} src={url_original} alt="pics"
+				className={second.pic}/>);
+		Pics.pop();
 		return (
 			<div className={second.wrapper}>
 				<div className={second.container}>
@@ -25,5 +34,9 @@ class SecondSection extends React.Component {
 		);
 	}
 }
+
+SecondSection.propTypes = {
+	content: PropTypes.object.isRequired,
+};
 
 export default SecondSection;
