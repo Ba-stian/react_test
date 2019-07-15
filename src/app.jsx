@@ -1,15 +1,9 @@
 import React from 'react';
-import Header from './header/header.jsx';
-import Main from './main/main.jsx';
-import Footer from './footer/footer.jsx';
+import Auth from './auth/auth.jsx';
 
 
 const App = () => (
-	<div>
-		<Header/>
-		<Main/>
-		<Footer/>
-	</div>
+	<Auth/>
 );
 
 export default App;

@@ -49,9 +49,11 @@ class Form extends React.Component {
 	onSubmit(e) {
 		e.preventDefault();
 		this.canSubmit();
-		if (this.state.isValid) {
-			this.props.onSubmit(this.getFormData());
+		if (!this.state.isValid) {
+			return;
 		}
+		this.props.onSubmit(this.getFormData());
+		this.state.inputs.forEach((input) => input.value='');
 	}
 
 	/**
@@ -62,6 +64,7 @@ class Form extends React.Component {
 		const value = e.target.value;
 		const elem = this.state.inputs[i];
 		elem.value = value;
+		this.canSubmit();
 	}
 
 	/**
