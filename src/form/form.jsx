@@ -4,12 +4,23 @@ import Button from '../widgets/button/button.jsx';
 import PropTypes from 'prop-types';
 
 
+/**
+ * @classdesc class Form
+ */
 class Form extends React.Component {
-	constructor(props){
+	/**
+	 * @param {string} props
+	 */
+	constructor(props) {
 		super(props);
 		this.props = props;
 		this.state = props.inputs;
+		this.state.isValid = false;
 	}
+
+	/**
+	 * @return {Form} markup
+	 */
 	render() {
 		return (
 			<div className={form.form}>
@@ -25,9 +36,8 @@ class Form extends React.Component {
 									onChange={(e) => this.onChange(e, i)}/>
 							</div>
 						)}
-						<Button text={'submit'} className={form.btn}
-							onSubmit={this.onSubmit.bind(this)}/>
-						<Button text={'logout'} className={form.btn}/>
+						<Button text={'login'} className={form.btn}
+							onClick={this.onSubmit.bind(this)}/>
 					</form>
 				</div>
 			</div>);
@@ -35,23 +45,47 @@ class Form extends React.Component {
 
 	/**
 	 * @param {event} e
-	 * @param {number} i
 	 */
-	onSubmit(e, i) {
+	onSubmit(e) {
 		e.preventDefault();
-		this.props.onSubmit(this.onChange(e, i));
+		this.canSubmit();
+		if (this.state.isValid) {
+			this.props.onSubmit(this.getFormData());
+		}
 	}
 
 	/**
 	 * @param {event} e
 	 * @param {number} i
-	 * @return {string}
 	 */
 	onChange(e, i) {
 		const value = e.target.value;
 		const elem = this.state.inputs[i];
 		elem.value = value;
-		return elem.value[0] && elem.value[1];
+	}
+
+	/**
+	 * @return {Object}
+	 */
+	getFormData() {
+		const data = {};
+		this.state.inputs.forEach((input)=> {
+			data[input.name] = input.value;
+		});
+		return data;
+	}
+
+	/**
+	 * @update state
+	 */
+	canSubmit() {
+		this.state.inputs.forEach((input) => {
+			if (input.value.length > 4) {
+				this.setState({
+					isValid: true,
+				});
+			}
+		});
 	}
 }
 
