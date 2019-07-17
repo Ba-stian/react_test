@@ -82,13 +82,13 @@ class Form extends React.Component {
 	 * @update state
 	 */
 	canSubmit() {
-		this.state.inputs.forEach((input) => {
-			if (input.value.length > 4) {
-				this.setState({
-					isValid: true,
-				});
-			}
-		});
+		const login = this.state.inputs[0];
+		const password = this.state.inputs[1];
+		if (login.value.length && password.value.length > 3) {
+			this.setState({
+				isValid: true,
+			});
+		}
 	}
 }
 
