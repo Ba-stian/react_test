@@ -1,13 +1,77 @@
 import React from 'react';
-import form from './form.css';
-import Button from '../widgets/button/button.jsx';
 import PropTypes from 'prop-types';
+import 'antd/dist/antd.css';
+import {Button, Input, Form} from 'antd';
+import styled from 'styled-components';
+
+
+const StyledButton = styled(Button)`
+font-size: 14px;
+color: #dfdfdf;
+display: block;
+margin: 30px auto;
+width: 50%;
+`;
+
+const FormInput = styled(Input)`
+margin: 2px 0 10px;
+outline: none;
+border: none;
+font-size: 14px;
+padding: 0 5px;
+width: 100%;
+height: 30px;
+box-shadow: 0 0 5px;
+`;
+
+const Wrapper = styled.div`
+width: 100%;
+height: 100vh;
+position: relative;`;
+
+const Container = styled.div`
+position: absolute;
+top: 34%;
+left: 50%;
+transform: translate(-50%,0%);
+padding: 60px 30px 30px;
+box-shadow: 0 0 10px;
+`;
+
+const Header = styled.h1`
+text-align: center;
+font-size: 20px;
+padding: 10px 0;
+`;
+
+const Label = styled.label`
+font-weight: bold;
+display: block;
+padding-bottom: 0;
+`;
+
+const Inputs = styled.div`
+margin: 0 auto;
+width: 250px;
+`;
+
+const Error = styled.p`
+color: #ff0000;
+font-size: 12px;
+padding: 4px 0;
+`;
+
+const ServerError = styled.p`
+color: #ff0000;
+font-size: 14px;
+padding: 6px 0;
+`;
 
 
 /**
  * @classdesc class Form
  */
-class Form extends React.Component {
+class AuthForm extends React.Component {
 	/**
 	 * @param {string} props
 	 */
@@ -16,6 +80,8 @@ class Form extends React.Component {
 		this.props = props;
 		this.state = props.inputs;
 		this.state.isValid = false;
+		this.state.error = [];
+		this.state.serverError = [];
 	}
 
 	/**
@@ -23,24 +89,27 @@ class Form extends React.Component {
 	 */
 	render() {
 		return (
-			<div className={form.form}>
-				<div className={form.container}>
-					<form onSubmit={this.onSubmit.bind(this)}>
-						<h1 className={form.header}>Войдите на сайт</h1>
+			<Wrapper>
+				<Container>
+					<Form onSubmit={this.onSubmit.bind(this)}>
+						<Header>Войдите на сайт</Header>
 						{this.state.inputs.map((input, i) =>
-							<div className={form.inputs} key={i}>
-								<label className={form.label}>{input.label}</label>
-								<input className={form.input} name={name} key={i}
-									type={input.type} value={this.state.value}
+							<Inputs key={i}>
+								<Label>{input.label}</Label>
+								<FormInput name={name} key={i}
+									type={input.type}
 									placeholder={input.placeholder}
 									onChange={(e) => this.onChange(e, i)}/>
-							</div>
+								<Error>{this.state.error}</Error>
+							</Inputs>
 						)}
-						<Button text={'login'} className={form.btn}
-							onClick={this.onSubmit.bind(this)}/>
-					</form>
-				</div>
-			</div>);
+						<ServerError>{this.state.serverError}</ServerError>
+						<StyledButton type='danger' htmlType='submit'>
+							Войти
+						</StyledButton>
+					</Form>
+				</Container>
+			</Wrapper>);
 	}
 
 	/**
@@ -92,9 +161,9 @@ class Form extends React.Component {
 	}
 }
 
-Form.propTypes = {
+AuthForm.propTypes = {
 	inputs: PropTypes.object.isRequired,
 	onSubmit: PropTypes.func.isRequired,
 };
 
-export default Form;
+export default AuthForm;

@@ -1,9 +1,33 @@
 import React from 'react';
-import Form from '../form/form.jsx';
-import inputs from '../widgets/inputs/inputs.js';
-import Button from '../widgets/button/button.jsx';
-import auth from './auth.css';
+import AuthForm from '../form/form.jsx';
+import inputs from '../widgets/inputs/inputs';
+import 'antd/dist/antd.css';
+import {Button} from 'antd';
+import styled from 'styled-components';
 
+
+const StyledButton = styled(Button)`
+color: #fff;
+font-size: 14px;
+width: 200px;
+`;
+const Header = styled.h1`
+font-size: 40px;
+margin: 0;
+padding-right: 50px;
+color: #fff;
+transition: .4s ease-in-out;
+&:hover {
+text-shadow: 0 0 3px;
+}
+`;
+const Wrapper = styled.div`
+height: 100vh;
+background: #5596ff;
+display: flex;
+justify-content: center;
+align-items: center;
+`;
 
 /**
  * @classdesc class for Auth
@@ -38,15 +62,15 @@ class Auth extends React.Component {
 		return (
 			<div>
 				{this.state.isLogged ?
-					<div className={auth.auth}>
-						<h1 className={auth.header}>
-							Congratulations, you are logged!</h1>
-						<Button text={'logout'} className={auth.btn}
-							onClick={this.logOut.bind(this)}/>
-					</div>
+					<Wrapper>
+						<Header>
+							Congratulations, you are logged!</Header>
+						<StyledButton type='primary'
+							onClick={this.logOut.bind(this)}>Выйти</StyledButton>
+					</Wrapper>
 					: null}
 				{(!this.state.isLogged)
-					? <Form inputs={inputs} onSubmit={this.onAuth.bind(this)}/>
+					? <AuthForm inputs={inputs} onSubmit={this.onAuth.bind(this)}/>
 					: null}
 			</div>
 		);
@@ -58,7 +82,7 @@ class Auth extends React.Component {
 	 */
 	onAuth(data) {
 		if (!this.state.isLogged) {
-			fetch('agg.st.devjs.ru/?Content-Type=application/json')
+			fetch('agg.st.devjs.ru/auth/token')
 				.then((res) => {
 					if (res.status === 200) {
 						this.setState({
